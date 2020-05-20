@@ -1,6 +1,6 @@
 [user]
 	name = Roman Weintraub
-	email = roman.weintraub@gls-itservices.com
+	email = roman.weintraub@googlemail.com
 [core]
 	autocrlf = input
 	pager = delta --light
