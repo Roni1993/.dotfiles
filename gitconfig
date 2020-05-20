@@ -1,0 +1,20 @@
+[user]
+	name = Roman Weintraub
+	email = roman.weintraub@gls-itservices.com
+[core]
+	autocrlf = input
+	pager = delta --light
+[auto]
+	crlf = true
+[diff]
+	tool = idea
+[difftool "idea"]
+	cmd = "idea64.sh $LOCAL $REMOTE"
+[difftool]
+	prompt = false
+[merge]
+	tool = idea
+[mergetool "idea"]
+	cmd = "idea64merge.sh $BASE $LOCAL $REMOTE $MERGED"
+[mergetool]
+	prompt = false
