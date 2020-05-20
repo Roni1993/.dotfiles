@@ -1,12 +1,3 @@
 #All host shortcuts
-Host whs-*
-  User gls
-
-Host us-*
-  User gls
-
-Host prod-ip*
-  User admin
-
 Host *
     KexAlgorithms +diffie-hellman-group1-sha1
