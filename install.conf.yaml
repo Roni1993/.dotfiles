@@ -12,5 +12,7 @@
     ~/.zsh_plugins: zsh_plugins
     ~/.p10k.zsh: p10k
 
-
+- shell:
+  - sudo chsh -s $(which zsh)
+  - [./aptinstall.sh]
 

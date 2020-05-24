@@ -42,3 +42,7 @@ autoload -U compinit && compinit
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 fpath=(~/.zsh.d/ $fpath)
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/rowe/.sdkman"
+[[ -s "/home/rowe/.sdkman/bin/sdkman-init.sh" ]] && source "/home/rowe/.sdkman/bin/sdkman-init.sh"
