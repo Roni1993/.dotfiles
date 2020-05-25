@@ -28,23 +28,34 @@ autoload -Uz _zinit
 ##########################################
 # setting up oh my zsh and all misc plugins
 #######################################
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+zinit atload'!source ~/.p10k.zsh' lucid nocd for \
+    romkatv/powerlevel10k
 
-zinit load zsh-users/zsh-completions
-zinit load zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
+zinit ice wait lucid atload'_zsh_autosuggest_start'
+zinit light zsh-users/zsh-autosuggestions
 
 #loading oh my zsh libs
 #zinit ice svn multisrc"misc.zsh functions.zsh" pick"/dev/null"
 zinit snippet OMZ::lib/history.zsh
+zinit snippet OMZ::lib/directories.zsh
+zinit snippet OMZ::lib/completion.zsh
 
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit snippet OMZ::plugins/wd/wd.plugin.zsh
 zinit snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
 zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh
+zinit snippet OMZ::plugins/fasd/fasd.plugin.zsh
+zinit snippet OMZ::plugins/gradle/gradle.plugin.zsh
+zinit snippet OMZ::plugins/safe-paste/safe-paste.plugin.zsh
+zinit snippet OMZ::plugins/sdk/sdk.plugin.zsh
+zinit snippet OMZ::plugins/magic-enter/magic-enter.plugin.zsh
 
-zinit load Aloxaf/fzf-tab
-zinit load zdharma/fast-syntax-highlighting
-zinit load wfxr/forgit
+zinit light Aloxaf/fzf-tab
+zinit light zdharma/fast-syntax-highlighting
+zinit ice wait lucid
+zinit light wfxr/forgit
+zinit light andrewferrier/fzf-z
 
 ###################################################################################
 # setting up remaining envs
@@ -57,7 +68,6 @@ alias ls=lsd
 #eval $(dircolors -b $HOME/.dircolors)
 #zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
-cd ~
 # TODO: traceroute proxy -> if available use proxy otherwise not
 #export https_proxy="http://proxy:8080/proxy.pac"
 #export http_proxy="http://proxy:8080/proxy.pac"
@@ -68,17 +78,14 @@ cd ~
 
 source ~/.profile
 
+# setting random plugin/app parameters
 PATH=$HOME/.local/bin:$PATH
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=180'
+MAGIC_ENTER_GIT_COMMAND='git status -u .'
+MAGIC_ENTER_OTHER_COMMAND='ls -lh .'
 
 unset ZLE_RPROMPT_INDENT
 setopt HIST_IGNORE_ALL_DUPS
-
-autoload -U compinit && compinit
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-fpath=(~/.zsh.d/ $fpath)
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/rowe/.sdkman"
