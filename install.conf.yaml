@@ -1,14 +1,20 @@
 - clean: ['~']
 
 - link:
-    ~/.profile: profile
-    ~/.gitconfig: gitconfig
+    ~/.profile: 
+        force: true
+        path: profile
+    ~/.gitconfig:
+        force: true
+        path: gitconfig
     ~/.ssh/config:
         path: ssh/config
         create: true
     ~/.zprofile: zprofile
     ~/.zshenv: zshenv
-    ~/.zshrc: zshrc
+    ~/.zshrc: 
+        force: true
+        path: zshrc
     ~/.zsh_plugins: zsh_plugins
     ~/.p10k.zsh: p10k
 

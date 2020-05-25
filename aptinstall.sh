@@ -52,7 +52,6 @@ install bashtop
 
 # cli ux
 install fzf
-bin-install antibody "https://git.io/antibody"
 bin-install cheat "https://cht.sh/:cht.sh"
 tar-install fasd "https://github.com/clvv/fasd/tarball/1.0.1"
 

@@ -24,6 +24,3 @@ PATH="$PATH:$HOME/.local/bin"
 
 PATH=$HOME/.local/bin:$PATH
 #PATH="$PATH:/mnt/c/windows/system/"
-
-export PATH="$HOME/.cargo/bin:$PATH"
-source $HOME/.cargo/env

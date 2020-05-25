@@ -6,11 +6,49 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # load zsh plugins via antibody
+export FZF_BASE=/usr/bin/fzf
 export FZF_DEFAULT_OPTS=' --color=light '
-export ZSH="/home/rowe/.oh-my-zsh"
-source <(antibody init)
-antibody bundle < ~/.zsh_plugins
 
+###################################################################################
+# zinit (plugin manager)
+###################################################################################
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f"
+fi
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of Zinit installer's chunk
+
+##########################################
+# setting up oh my zsh and all misc plugins
+#######################################
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+
+zinit load zsh-users/zsh-completions
+zinit load zsh-users/zsh-autosuggestions
+
+#loading oh my zsh libs
+#zinit ice svn multisrc"misc.zsh functions.zsh" pick"/dev/null"
+zinit snippet OMZ::lib/history.zsh
+
+zinit snippet OMZ::plugins/git/git.plugin.zsh
+zinit snippet OMZ::plugins/wd/wd.plugin.zsh
+zinit snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
+zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh
+
+zinit load Aloxaf/fzf-tab
+zinit load zdharma/fast-syntax-highlighting
+zinit load wfxr/forgit
+
+###################################################################################
+# setting up remaining envs
+###################################################################################
 unset http_proxy https_proxy no_proxy
 unset HTTP_PROXY HTTPS_PROXY NO_PROXY
 
@@ -31,7 +69,6 @@ cd ~
 source ~/.profile
 
 PATH=$HOME/.local/bin:$PATH
-FZF_BASE=/usr/bin/fzf
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=180'
 
 unset ZLE_RPROMPT_INDENT
