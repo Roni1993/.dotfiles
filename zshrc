@@ -5,7 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# load zsh plugins via antibody
+# define FZF params
 export FZF_BASE=/usr/bin/fzf
 export FZF_DEFAULT_OPTS=' --color=light '
 
@@ -30,51 +30,45 @@ autoload -Uz _zinit
 #######################################
 zinit atload'!source ~/.p10k.zsh' lucid nocd for \
     romkatv/powerlevel10k
-
 zinit light zsh-users/zsh-completions
+
+zinit snippet OMZL::history.zsh
+zinit snippet OMZL::directories.zsh
+zinit snippet OMZL::completion.zsh
+
+zinit snippet OMZP::git
+zinit snippet OMZP::wd
+zinit snippet OMZP::colored-man-pages
+zinit snippet OMZP::fasd
+zinit snippet OMZP::safe-paste
+zinit snippet OMZP::magic-enter
+zinit snippet OMZP::sdk
+zinit snippet OMZP::fzf
+
+zinit ice wait lucid; zinit light wfxr/forgit
+#zinit ice wait lucid; zinit light andrewferrier/fzf-z
+zinit ice wait lucid; zinit light SukkaW/zsh-proxy
+
+#adding auto suggestion stuff
+zinit ice wait lucid atinit"zicompinit"
+zinit light Aloxaf/fzf-tab
 zinit ice wait lucid atload'_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
+zinit ice wait lucid; zinit light zdharma/fast-syntax-highlighting
 
-#loading oh my zsh libs
-#zinit ice svn multisrc"misc.zsh functions.zsh" pick"/dev/null"
-zinit snippet OMZ::lib/history.zsh
-zinit snippet OMZ::lib/directories.zsh
-zinit snippet OMZ::lib/completion.zsh
-
-zinit snippet OMZ::plugins/git/git.plugin.zsh
-zinit snippet OMZ::plugins/wd/wd.plugin.zsh
-zinit snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
-zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh
-zinit snippet OMZ::plugins/fasd/fasd.plugin.zsh
-zinit snippet OMZ::plugins/gradle/gradle.plugin.zsh
-zinit snippet OMZ::plugins/safe-paste/safe-paste.plugin.zsh
-zinit snippet OMZ::plugins/sdk/sdk.plugin.zsh
-zinit snippet OMZ::plugins/magic-enter/magic-enter.plugin.zsh
-
-zinit light Aloxaf/fzf-tab
-zinit light zdharma/fast-syntax-highlighting
-zinit ice wait lucid
-zinit light wfxr/forgit
-zinit light andrewferrier/fzf-z
-
+# load sdkman with zinit
+zinit ice wait lucid as"program" pick"$HOME/.sdkman/bin/sdk" id-as'sdkman' run-atpull \
+    atclone"wget https://get.sdkman.io -O scr.sh; SDKMAN_DIR=$HOME/.sdkman bash scr.sh" \
+    atpull"SDKMAN_DIR=$HOME/.sdkman sdk selfupdate"
+zinit light zdharma/null
 ###################################################################################
 # setting up remaining envs
 ###################################################################################
-unset http_proxy https_proxy no_proxy
-unset HTTP_PROXY HTTPS_PROXY NO_PROXY
 
 # load all dircolors due to windows madness
 alias ls=lsd
 #eval $(dircolors -b $HOME/.dircolors)
 #zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
-# TODO: traceroute proxy -> if available use proxy otherwise not
-#export https_proxy="http://proxy:8080/proxy.pac"
-#export http_proxy="http://proxy:8080/proxy.pac"
-#export HTTPS_PROXY="http://proxy:8080/proxy.pac"
-#export HTTP_PROXY="http://proxy:8080/proxy.pac"
-#export no_proxy="*.global.gls, *.dc.gls, localhost, 127.0.0.1, *.nst.gls-germany.com"
-#export NO_PROXY="*.global.gls, *.dc.gls, localhost, 127.0.0.1, *.nst.gls-germany.com"
 
 source ~/.profile
 
@@ -86,7 +80,3 @@ MAGIC_ENTER_OTHER_COMMAND='ls -lh .'
 
 unset ZLE_RPROMPT_INDENT
 setopt HIST_IGNORE_ALL_DUPS
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/rowe/.sdkman"
-[[ -s "/home/rowe/.sdkman/bin/sdkman-init.sh" ]] && source "/home/rowe/.sdkman/bin/sdkman-init.sh"

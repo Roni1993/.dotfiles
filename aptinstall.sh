@@ -61,12 +61,6 @@ install lazygit
 install jq
 bin-install jtc https://github.com/ldn-softdev/jtc/releases/download/LatestBuild/jtc-linux-64.v1.76a
 
-#sdkman  
-if [ ! -d "$SDKMAN_DIR" ]; then
-  curl -s "https://get.sdkman.io" | bash
-  source "/home/rowe/.sdkman/bin/sdkman-init.sh"
-fi
-
 # cloud-dev
 bin-install odo https://mirror.openshift.com/pub/openshift-v4/clients/odo/latest/odo-linux-amd64
 
