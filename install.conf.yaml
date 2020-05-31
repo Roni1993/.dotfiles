@@ -18,6 +18,11 @@
     ~/.p10k.zsh: p10k
 
 - shell:
-  - [./aptinstall.sh]
+  - command: ./aptinstall.sh
+    stdin: true
+    stdout: true
+    stderr: true
+    description: Installing several cli utils and dependecies from all ZSH plugins.
+    quiet: false
   - sudo chsh -s $(which zsh)
 
