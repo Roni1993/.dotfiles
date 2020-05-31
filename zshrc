@@ -61,6 +61,8 @@ zinit ice wait lucid as"program" pick"$HOME/.sdkman/bin/sdk" id-as'sdkman' run-a
     atclone"wget https://get.sdkman.io -O scr.sh; SDKMAN_DIR=$HOME/.sdkman bash scr.sh" \
     atpull"SDKMAN_DIR=$HOME/.sdkman sdk selfupdate"
 zinit light zdharma/null
+
+zinit ice wait lucid; zinit light micha/resty
 ###################################################################################
 # setting up remaining envs
 ###################################################################################
