@@ -9,6 +9,14 @@ fi
 export FZF_BASE=/usr/bin/fzf
 export FZF_DEFAULT_OPTS=' --color=light '
 
+# load homebrew
+export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew/Homebrew";
+export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Homebrew/Cellar";
+export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew";
+export PATH="/home/linuxbrew/.linuxbrew/Homebrew/bin:/home/linuxbrew/.linuxbrew/Homebrew/sbin${PATH+:$PATH}";
+export MANPATH="/home/linuxbrew/.linuxbrew/Homebrew/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/home/linuxbrew/.linuxbrew/Homebrew/share/info${INFOPATH+:$INFOPATH}";
+
 ###################################################################################
 # zinit (plugin manager)
 ###################################################################################
@@ -31,6 +39,12 @@ autoload -Uz _zinit
 zinit atload'!source ~/.p10k.zsh' lucid nocd for \
     romkatv/powerlevel10k
 zinit light zsh-users/zsh-completions
+
+# load sdkman with zinit
+zinit ice wait lucid as"program" pick"$HOME/.sdkman/bin/sdk" id-as'sdkman' run-atpull \
+    atclone"wget https://get.sdkman.io -O scr.sh; SDKMAN_DIR=$HOME/.sdkman bash scr.sh" \
+    atpull"SDKMAN_DIR=$HOME/.sdkman sdk selfupdate"
+zinit light zdharma/null
 
 zinit snippet OMZL::history.zsh
 zinit snippet OMZL::directories.zsh
@@ -56,12 +70,6 @@ zinit ice wait lucid atload'_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
 zinit ice wait lucid; zinit light zdharma/fast-syntax-highlighting
 
-# load sdkman with zinit
-zinit ice wait lucid as"program" pick"$HOME/.sdkman/bin/sdk" id-as'sdkman' run-atpull \
-    atclone"wget https://get.sdkman.io -O scr.sh; SDKMAN_DIR=$HOME/.sdkman bash scr.sh" \
-    atpull"SDKMAN_DIR=$HOME/.sdkman sdk selfupdate"
-zinit light zdharma/null
-
 zinit ice wait lucid; zinit light micha/resty
 ###################################################################################
 # setting up remaining envs
@@ -69,6 +77,7 @@ zinit ice wait lucid; zinit light micha/resty
 
 # load all dircolors due to windows madness
 alias ls=lsd
+alias cat=batcat
 #eval $(dircolors -b $HOME/.dircolors)
 #zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 

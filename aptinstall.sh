@@ -41,6 +41,8 @@ function tar-install {
 }
 
 # Basics
+install build-essential
+install file
 install unzip
 install tree
 install curl
@@ -50,22 +52,33 @@ install tmux
 install neovim
 install bashtop
 
+# Install Homebrew
+which brew &> /dev/null
+if [ $? -ne 0 ]; then
+  echo "Installing: Homebrew..."
+  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
+else
+  echo "Already installed: Homebrew"
+fi
+
 # cli ux
 install fzf
 bin-install cheat "https://cht.sh/:cht.sh"
-tar-install fasd "https://github.com/clvv/fasd/tarball/1.0.1"
+brew install fasd
 
 # dev
-install git
 install lazygit
 install jq
 bin-install jtc https://github.com/ldn-softdev/jtc/releases/download/LatestBuild/jtc-linux-64.v1.76a
 
 # cloud-dev
 bin-install odo https://mirror.openshift.com/pub/openshift-v4/clients/odo/latest/odo-linux-amd64
+bin-install k3s https://github.com/rancher/k3s/releases/download/v1.16.9%2Bk3s1/k3s
+brew install kubectl
+brew install derailed/k9s/k9s
 
 # beautiful drop ins
 install bat
-tar-install lsd "https://github.com/Peltoche/lsd/releases/download/0.17.0/lsd-0.17.0-x86_64-unknown-linux-gnu.tar.gz"
-tar-install delta "https://github.com/dandavison/delta/releases/download/0.1.1/delta-0.1.1-x86_64-unknown-linux-gnu.tar.gz"
+brew install lsd
+brew install git-delta
 
