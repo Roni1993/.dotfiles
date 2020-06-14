@@ -15,7 +15,15 @@
     ~/.zshrc: 
         force: true
         path: zshrc
-    ~/.p10k.zsh: p10k
+    ~/.p10k.zsh: 
+        force: true
+        path: p10k
+    ~/.config:
+        force: true
+        path: config
+
+- create:
+    - ~/.vim/undodir
 
 - shell:
   - command: ./aptinstall.sh

@@ -77,7 +77,10 @@ bin-install k3s https://github.com/rancher/k3s/releases/download/v1.16.9%2Bk3s1/
 brew install kubectl
 brew install derailed/k9s/k9s
 
-# beautiful drop ins
+# beautiful/better drop ins
+brew install ripgrep
+brew install fd
+brew install exa
 install bat
 brew install lsd
 brew install git-delta
