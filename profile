@@ -21,7 +21,7 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 PATH="$PATH:$HOME/.local/bin"
-EDITOR="vim"
+EDITOR="nvim"
 
 PATH=$HOME/.local/bin:$PATH
 #PATH="$PATH:/mnt/c/windows/system/"

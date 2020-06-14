@@ -59,15 +59,19 @@ zinit snippet OMZP::magic-enter
 zinit snippet OMZP::sdk
 zinit snippet OMZP::fzf
 
+#load kubectl completion
+zinit light-mode lucid wait has"kubectl" for \
+  id-as"kubectl_completion" as"completion" \
+  atclone"kubectl completion zsh > _kubectl" \
+  atpull"%atclone" run-atpull zdharma/null
+
 zinit ice wait lucid; zinit light wfxr/forgit
 #zinit ice wait lucid; zinit light andrewferrier/fzf-z
 zinit ice wait lucid; zinit light SukkaW/zsh-proxy
 
 #adding auto suggestion stuff
-zinit ice wait lucid atinit"zicompinit"
-zinit light Aloxaf/fzf-tab
-zinit ice wait lucid atload'_zsh_autosuggest_start'
-zinit light zsh-users/zsh-autosuggestions
+zinit ice wait lucid atinit"zicompinit"; zinit light Aloxaf/fzf-tab
+zinit ice wait lucid atload'_zsh_autosuggest_start'; zinit light zsh-users/zsh-autosuggestions
 zinit ice wait lucid; zinit light zdharma/fast-syntax-highlighting
 
 zinit ice wait lucid; zinit light micha/resty
