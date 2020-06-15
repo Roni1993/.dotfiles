@@ -21,18 +21,23 @@ set incsearch
 set termguicolors
 set scrolloff=8
 
-call plug#begin()
-Plug 'wincent/terminus'
-Plug 'wincent/command-t'
-Plug 'wincent/ferret'
 
+call plug#begin()
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-rooter'
+
+Plug 'junegunn/goyo.vim'
+Plug 'wincent/terminus'
 Plug 'vim-airline/vim-airline'
 Plug 'rakr/vim-one'
 Plug 'yuttie/comfortable-motion.vim'
 
-Plug 'junegunn/goyo.vim'
 Plug 'valloric/youcompleteme'
 Plug 'sheerun/vim-polyglot'
+
+Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 call plug#end()
 
 colorscheme one

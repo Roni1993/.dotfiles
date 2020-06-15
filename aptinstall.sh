@@ -42,6 +42,7 @@ function tar-install {
 
 # Basics
 install build-essential
+install cmake
 install file
 install unzip
 install tree
@@ -67,6 +68,7 @@ bin-install cheat "https://cht.sh/:cht.sh"
 brew install fasd
 
 # dev
+brew install watchman
 install lazygit
 install jq
 bin-install jtc https://github.com/ldn-softdev/jtc/releases/download/LatestBuild/jtc-linux-64.v1.76a
@@ -78,10 +80,9 @@ brew install kubectl
 brew install derailed/k9s/k9s
 
 # beautiful/better drop ins
-brew install ripgrep
-brew install fd
+install ripgrep
+install fd
 brew install exa
 install bat
-brew install lsd
 brew install git-delta
 
