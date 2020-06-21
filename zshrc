@@ -6,8 +6,13 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # define FZF params
+export COLORTERM="truecolor"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=180'
+export BAT_THEME="OneHalfLight"
 export FZF_BASE=/usr/bin/fzf
 export FZF_DEFAULT_OPTS=' --color=light '
+export FZF_DEFAULT_COMMAND='rg --files'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # load homebrew
 export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew/Homebrew";
@@ -67,7 +72,6 @@ zinit light-mode lucid wait has"kubectl" for \
 
 zinit ice wait lucid; zinit light wfxr/forgit
 #zinit ice wait lucid; zinit light andrewferrier/fzf-z
-zinit ice wait lucid; zinit light SukkaW/zsh-proxy
 
 #adding auto suggestion stuff
 zinit ice wait lucid atinit"zicompinit"; zinit light Aloxaf/fzf-tab
@@ -89,7 +93,6 @@ source ~/.profile
 
 # setting random plugin/app parameters
 PATH=$HOME/.local/bin:$PATH
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=180'
 MAGIC_ENTER_GIT_COMMAND='git status -u .'
 MAGIC_ENTER_OTHER_COMMAND='ls -lh .'
 
