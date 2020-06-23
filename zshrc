@@ -84,7 +84,7 @@ zinit ice wait lucid; zinit light micha/resty
 ###################################################################################
 
 # load all dircolors due to windows madness
-alias ls=exa --icons
+alias ls="exa --icons"
 alias cat=batcat
 #eval $(dircolors -b $HOME/.dircolors)
 #zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
