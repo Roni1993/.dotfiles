@@ -14,6 +14,9 @@ export FZF_DEFAULT_OPTS=' --color=light '
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+# AWS configuration
+export AWS_PROFILE=saml
+
 # load homebrew
 export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew/Homebrew";
 export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Homebrew/Cellar";
@@ -70,7 +73,14 @@ zinit light-mode lucid wait has"kubectl" for \
   atclone"kubectl completion zsh > _kubectl" \
   atpull"%atclone" run-atpull zdharma/null
 
+#load eksctl completion
+zinit light-mode lucid wait has"eksctl" for \
+  id-as"eksctl_completion" as"completion" \
+  atclone"eksctl completion zsh > _eksctl" \
+  atpull"%atclone" run-atpull zdharma/null
+
 zinit ice wait lucid; zinit light wfxr/forgit
+zinit ice wait lucid; zinit light SukkaW/zsh-proxy
 #zinit ice wait lucid; zinit light andrewferrier/fzf-z
 
 #adding auto suggestion stuff
