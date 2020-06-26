@@ -79,6 +79,7 @@ zinit light-mode lucid wait has"eksctl" for \
   atclone"eksctl completion zsh > _eksctl" \
   atpull"%atclone" run-atpull zdharma/null
 
+zinit ice wait lucid; zinit light djui/alias-tips
 zinit ice wait lucid; zinit light wfxr/forgit
 zinit ice wait lucid; zinit light SukkaW/zsh-proxy
 #zinit ice wait lucid; zinit light andrewferrier/fzf-z
