@@ -77,12 +77,13 @@ bin-install jtc https://github.com/ldn-softdev/jtc/releases/download/LatestBuild
 bin-install odo https://mirror.openshift.com/pub/openshift-v4/clients/odo/latest/odo-linux-amd64
 bin-install k3s https://github.com/rancher/k3s/releases/download/v1.16.9%2Bk3s1/k3s
 brew install kubectl
+brew install knative/client/kn
 brew install derailed/k9s/k9s
 
 # beautiful/better drop ins
 install ripgrep
 install fd
 brew install exa
-install bat
+brew install bat
 brew install git-delta
 
