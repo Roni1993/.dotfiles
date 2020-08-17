@@ -14,9 +14,6 @@ export FZF_DEFAULT_OPTS=' --color=light '
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-# AWS configuration
-export AWS_PROFILE=saml
-
 # load homebrew
 export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew/Homebrew";
 export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Homebrew/Cellar";
@@ -51,8 +48,9 @@ zinit light zsh-users/zsh-completions
 # load sdkman with zinit
 zinit ice wait lucid as"program" pick"$HOME/.sdkman/bin/sdk" id-as'sdkman' run-atpull \
     atclone"wget https://get.sdkman.io -O scr.sh; SDKMAN_DIR=$HOME/.sdkman bash scr.sh" \
-    atpull"SDKMAN_DIR=$HOME/.sdkman sdk selfupdate"
+    atpull"SDKMAN_DIR=$HOME/.sdkman sdk selfupdate" atinit". $HOME/.sdkman/bin/sdkman-init.sh"
 zinit light zdharma/null
+zinit ice wait lucid; zinit light nobeans/zsh-sdkman
 
 zinit snippet OMZL::history.zsh
 zinit snippet OMZL::directories.zsh
@@ -79,6 +77,7 @@ zinit light-mode lucid wait has"eksctl" for \
   atclone"eksctl completion zsh > _eksctl" \
   atpull"%atclone" run-atpull zdharma/null
 
+zinit ice wait lucid atload'base16_summerfruit-light'; zinit light chriskempson/base16-shell
 zinit ice wait lucid; zinit light djui/alias-tips
 zinit ice wait lucid; zinit light wfxr/forgit
 zinit ice wait lucid; zinit light SukkaW/zsh-proxy
@@ -97,8 +96,6 @@ zinit ice wait lucid; zinit light micha/resty
 # load all dircolors due to windows madness
 alias ls="exa --icons"
 alias cat=batcat
-#eval $(dircolors -b $HOME/.dircolors)
-#zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 source ~/.profile
 
@@ -109,3 +106,4 @@ MAGIC_ENTER_OTHER_COMMAND='ls -lh .'
 
 unset ZLE_RPROMPT_INDENT
 setopt HIST_IGNORE_ALL_DUPS
+
