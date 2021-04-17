@@ -95,7 +95,7 @@ zinit ice wait lucid; zinit light micha/resty
 
 # load all dircolors due to windows madness
 alias ls="exa --icons"
-alias cat=batcat
+alias k="kubectl"
 
 source ~/.profile
 
