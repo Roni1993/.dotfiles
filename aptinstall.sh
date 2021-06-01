@@ -44,7 +44,7 @@ function tar-install {
 install build-essential
 install cmake
 install file
-install unzip
+install zip
 install tree
 install curl
 install httpie
@@ -73,12 +73,10 @@ install lazygit
 install jq
 bin-install jtc https://github.com/ldn-softdev/jtc/releases/download/LatestBuild/jtc-linux-64.v1.76a
 
-# cloud-dev
-bin-install odo https://mirror.openshift.com/pub/openshift-v4/clients/odo/latest/odo-linux-amd64
-bin-install k3s https://github.com/rancher/k3s/releases/download/v1.16.9%2Bk3s1/k3s
+# k8s helper
 brew install kubectl
-brew install knative/client/kn
-brew install derailed/k9s/k9s
+brew install kubectx
+brew install helm
 
 # beautiful/better drop ins
 install ripgrep
