@@ -30,32 +30,31 @@ endif
 
 call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-"Plug 'junegunn/fzf.vim'
-Plug 'yuki-ycino/fzf-preview.vim'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'sheerun/vim-polyglot'
+
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-rooter'
 
-Plug 'junegunn/goyo.vim'
 Plug 'wincent/terminus'
 Plug 'vim-airline/vim-airline'
-Plug 'rakr/vim-one'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'chriskempson/base16-vim'
 Plug 'yuttie/comfortable-motion.vim'
 
-Plug 'valloric/youcompleteme'
-Plug 'sheerun/vim-polyglot'
+"Plug 'valloric/youcompleteme'
 
 Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 call plug#end()
 
-colorscheme one
-set background=light
-let g:airline_theme='one'
+colorscheme base16-summerfruit-light
+let g:airline_theme='base16'
 let g:airline_powerline_fonts = 1
-let g:one_allow_italics = 1 
 let g:goyo_width = 100
 
-highlight Normal guibg=none
-highlight NonText guibg=none
+highlight clear Normal
+highlight clear NonText
+highlight clear LineNr
 
 let mapleader = " "
 nnoremap <leader>wh :wincmd h<CR>
@@ -67,3 +66,11 @@ nnoremap <leader>wl :wincmd l<CR>
 " set nice scrolling
 nnoremap <silent> <leader>j :call comfortable_motion#flick(100)<CR>
 nnoremap <silent> <leader>k :call comfortable_motion#flick(-100)<CR>
+
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+    augroup END
+endif

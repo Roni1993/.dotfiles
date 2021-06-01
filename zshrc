@@ -6,8 +6,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # define FZF params
-export COLORTERM="truecolor"
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=180'
+export COLORTERM="base16"
+# export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=180'
 export BAT_THEME="OneHalfLight"
 export FZF_BASE=/usr/bin/fzf
 export FZF_DEFAULT_OPTS=' --color=light '
@@ -21,6 +21,9 @@ export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew";
 export PATH="/home/linuxbrew/.linuxbrew/Homebrew/bin:/home/linuxbrew/.linuxbrew/Homebrew/sbin${PATH+:$PATH}";
 export MANPATH="/home/linuxbrew/.linuxbrew/Homebrew/share/man${MANPATH+:$MANPATH}:";
 export INFOPATH="/home/linuxbrew/.linuxbrew/Homebrew/share/info${INFOPATH+:$INFOPATH}";
+
+# other system Envs
+export WSL_HOST_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
 
 ###################################################################################
 # zinit (plugin manager)
@@ -61,7 +64,6 @@ zinit snippet OMZP::wd
 zinit snippet OMZP::colored-man-pages
 zinit snippet OMZP::fasd
 zinit snippet OMZP::safe-paste
-zinit snippet OMZP::magic-enter
 zinit snippet OMZP::sdk
 zinit snippet OMZP::fzf
 
@@ -69,6 +71,18 @@ zinit snippet OMZP::fzf
 zinit light-mode lucid wait has"kubectl" for \
   id-as"kubectl_completion" as"completion" \
   atclone"kubectl completion zsh > _kubectl" \
+  atpull"%atclone" run-atpull zdharma/null
+
+#load k3d completion
+zinit light-mode lucid wait has"k3d" for \
+  id-as"k3d_completion" as"completion" \
+  atclone"k3d completion zsh > _k3d" \
+  atpull"%atclone" run-atpull zdharma/null
+
+#load kind completion
+zinit light-mode lucid wait has"kind" for \
+  id-as"kind_completion" as"completion" \
+  atclone"kind completion zsh > _kind" \
   atpull"%atclone" run-atpull zdharma/null
 
 #load eksctl completion
@@ -95,14 +109,20 @@ zinit ice wait lucid; zinit light micha/resty
 
 # load all dircolors due to windows madness
 alias ls="exa --icons"
-alias cat=batcat
+alias k=kubectl
+alias vi=nvim
+alias vim=nvim
 
 source ~/.profile
 
+# load visual studio code
+PATH="$PATH:$(wslpath "C:\Users\Roni\AppData\Local\Programs\Microsoft VS Code\bin")"
+
+# load kubectl plugins
+export PATH="${PATH}:${HOME}/.krew/bin"
+
 # setting random plugin/app parameters
 PATH=$HOME/.local/bin:$PATH
-MAGIC_ENTER_GIT_COMMAND='git status -u .'
-MAGIC_ENTER_OTHER_COMMAND='ls -lh .'
 
 unset ZLE_RPROMPT_INDENT
 setopt HIST_IGNORE_ALL_DUPS
