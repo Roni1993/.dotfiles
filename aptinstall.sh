@@ -1,7 +1,6 @@
 #!/bin/bash
 
 sudo add-apt-repository -y ppa:lazygit-team/release
-sudo add-apt-repository -y ppa:bashtop-monitor/bashtop
 
 sudo apt update && sudo apt full-upgrade -y
 
@@ -45,13 +44,13 @@ install build-essential
 install cmake
 install file
 install zip
+install unzip
 install tree
 install curl
 install httpie
 install zsh 
 install tmux
 install neovim
-install bashtop
 
 # Install Homebrew
 which brew &> /dev/null
@@ -69,6 +68,10 @@ brew install fasd
 
 # dev
 brew install watchman
+brew install krew
+brew install ktree
+brew install dive
+brew install tilt-dev/tap/tilt
 install lazygit
 install jq
 bin-install jtc https://github.com/ldn-softdev/jtc/releases/download/LatestBuild/jtc-linux-64.v1.76a
