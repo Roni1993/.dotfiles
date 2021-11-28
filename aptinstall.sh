@@ -68,6 +68,7 @@ brew install fasd
 
 # dev
 brew install watchman
+brew install gh
 brew install krew
 brew install ktree
 brew install dive
