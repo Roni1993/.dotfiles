@@ -61,7 +61,6 @@ zinit snippet OMZP::wd
 zinit snippet OMZP::colored-man-pages
 zinit snippet OMZP::fasd
 zinit snippet OMZP::safe-paste
-zinit snippet OMZP::magic-enter
 zinit snippet OMZP::sdk
 zinit snippet OMZP::fzf
 
@@ -80,6 +79,7 @@ zinit light-mode lucid wait has"eksctl" for \
 zinit ice wait lucid atload'base16_summerfruit-light'; zinit light chriskempson/base16-shell
 zinit ice wait lucid; zinit light djui/alias-tips
 zinit ice wait lucid; zinit light wfxr/forgit
+zinit ice wait lucid; zinit light lukechilds/zsh-nvm
 zinit ice wait lucid; zinit light SukkaW/zsh-proxy
 #zinit ice wait lucid; zinit light andrewferrier/fzf-z
 
@@ -96,13 +96,13 @@ zinit ice wait lucid; zinit light micha/resty
 # load all dircolors due to windows madness
 alias ls="exa --icons"
 alias k="kubectl"
+alias kw="watch kubectl"
 
 source ~/.profile
 
 # setting random plugin/app parameters
+PATH="${PATH}:${HOME}/.krew/bin"
 PATH=$HOME/.local/bin:$PATH
-MAGIC_ENTER_GIT_COMMAND='git status -u .'
-MAGIC_ENTER_OTHER_COMMAND='ls -lh .'
 
 unset ZLE_RPROMPT_INDENT
 setopt HIST_IGNORE_ALL_DUPS

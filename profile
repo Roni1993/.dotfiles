@@ -25,3 +25,4 @@ EDITOR="nvim"
 
 PATH=$HOME/.local/bin:$PATH
 #PATH="$PATH:/mnt/c/windows/system/"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
