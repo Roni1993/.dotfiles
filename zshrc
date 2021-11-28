@@ -30,9 +30,9 @@ export WSL_HOST_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
 ###################################################################################
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
+    print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma-continuum/zinit)…%f"
     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/bin" && \
         print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
         print -P "%F{160}▓▒░ The clone has failed.%f"
 fi
@@ -52,7 +52,7 @@ zinit light zsh-users/zsh-completions
 zinit ice wait lucid as"program" pick"$HOME/.sdkman/bin/sdk" id-as'sdkman' run-atpull \
     atclone"wget https://get.sdkman.io -O scr.sh; SDKMAN_DIR=$HOME/.sdkman bash scr.sh" \
     atpull"SDKMAN_DIR=$HOME/.sdkman sdk selfupdate" atinit". $HOME/.sdkman/bin/sdkman-init.sh"
-zinit light zdharma/null
+zinit light zdharma-continuum/null
 zinit ice wait lucid; zinit light nobeans/zsh-sdkman
 
 zinit snippet OMZL::history.zsh
@@ -71,25 +71,25 @@ zinit snippet OMZP::fzf
 zinit light-mode lucid wait has"kubectl" for \
   id-as"kubectl_completion" as"completion" \
   atclone"kubectl completion zsh > _kubectl" \
-  atpull"%atclone" run-atpull zdharma/null
+  atpull"%atclone" run-atpull zdharma-continuum/null
 
 #load k3d completion
 zinit light-mode lucid wait has"k3d" for \
   id-as"k3d_completion" as"completion" \
   atclone"k3d completion zsh > _k3d" \
-  atpull"%atclone" run-atpull zdharma/null
+  atpull"%atclone" run-atpull zdharma-continuum/null
 
 #load kind completion
 zinit light-mode lucid wait has"kind" for \
   id-as"kind_completion" as"completion" \
   atclone"kind completion zsh > _kind" \
-  atpull"%atclone" run-atpull zdharma/null
+  atpull"%atclone" run-atpull zdharma-continuum/null
 
 #load eksctl completion
 zinit light-mode lucid wait has"eksctl" for \
   id-as"eksctl_completion" as"completion" \
   atclone"eksctl completion zsh > _eksctl" \
-  atpull"%atclone" run-atpull zdharma/null
+  atpull"%atclone" run-atpull zdharma-continuum/null
 
 zinit ice wait lucid atload'base16_summerfruit-light'; zinit light chriskempson/base16-shell
 zinit ice wait lucid; zinit light djui/alias-tips
@@ -101,7 +101,7 @@ zinit ice wait lucid; zinit light SukkaW/zsh-proxy
 #adding auto suggestion stuff
 zinit ice wait lucid atinit"zicompinit"; zinit light Aloxaf/fzf-tab
 zinit ice wait lucid atload'_zsh_autosuggest_start'; zinit light zsh-users/zsh-autosuggestions
-zinit ice wait lucid; zinit light zdharma/fast-syntax-highlighting
+zinit ice wait lucid; zinit light zdharma-continuum/fast-syntax-highlighting
 
 zinit ice wait lucid; zinit light micha/resty
 ###################################################################################
