@@ -73,24 +73,13 @@ zinit light-mode lucid wait has"k3d" for \
   atclone"k3d completion zsh > _k3d" \
   atpull"%atclone" run-atpull zdharma-continuum/null
 
-#load kind completion
-zinit light-mode lucid wait has"kind" for \
-  id-as"kind_completion" as"completion" \
-  atclone"kind completion zsh > _kind" \
-  atpull"%atclone" run-atpull zdharma-continuum/null
-
-#load eksctl completion
-zinit light-mode lucid wait has"eksctl" for \
-  id-as"eksctl_completion" as"completion" \
-  atclone"eksctl completion zsh > _eksctl" \
-  atpull"%atclone" run-atpull zdharma-continuum/null
-
 zinit ice wait lucid atload'base16_summerfruit-light'; zinit light chriskempson/base16-shell
 zinit ice wait lucid; zinit light djui/alias-tips
 zinit ice wait lucid; zinit light wfxr/forgit
 zinit ice wait lucid; zinit light lukechilds/zsh-nvm
 zinit ice wait lucid; zinit light SukkaW/zsh-proxy
 zinit ice wait lucid; zinit light nnao45/zsh-kubectl-completion
+zinit ice wait lucid; zinit light zdharma-continuum/history-search-multi-word
 #zinit ice wait lucid; zinit light andrewferrier/fzf-z
 
 #adding auto suggestion stuff
