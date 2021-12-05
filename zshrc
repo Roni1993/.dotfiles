@@ -67,12 +67,6 @@ zinit snippet OMZP::safe-paste
 zinit snippet OMZP::sdk
 zinit snippet OMZP::fzf
 
-#load kubectl completion
-zinit light-mode lucid wait has"kubectl" for \
-  id-as"kubectl_completion" as"completion" \
-  atclone"kubectl completion zsh > _kubectl" \
-  atpull"%atclone" run-atpull zdharma-continuum/null
-
 #load k3d completion
 zinit light-mode lucid wait has"k3d" for \
   id-as"k3d_completion" as"completion" \
@@ -96,6 +90,7 @@ zinit ice wait lucid; zinit light djui/alias-tips
 zinit ice wait lucid; zinit light wfxr/forgit
 zinit ice wait lucid; zinit light lukechilds/zsh-nvm
 zinit ice wait lucid; zinit light SukkaW/zsh-proxy
+zinit ice wait lucid; zinit light nnao45/zsh-kubectl-completion
 #zinit ice wait lucid; zinit light andrewferrier/fzf-z
 
 #adding auto suggestion stuff
