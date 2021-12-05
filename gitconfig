@@ -20,3 +20,6 @@
 	prompt = false
 [credential]
 	helper = cache
+[credential "https://github.com"]
+	helper = 
+	helper = !/home/linuxbrew/.linuxbrew/Cellar/gh/2.3.0/bin/gh auth git-credential
