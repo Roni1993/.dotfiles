@@ -50,7 +50,6 @@ install curl
 install httpie
 install zsh 
 install tmux
-install neovim
 
 # Install Homebrew
 which brew &> /dev/null
@@ -68,6 +67,7 @@ brew install fasd
 
 # dev
 brew install watchman
+brew install neovim
 brew install gh
 brew install krew
 brew install ktree
