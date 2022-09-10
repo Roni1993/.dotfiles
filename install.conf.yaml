@@ -32,5 +32,4 @@
     stderr: true
     description: Installing several cli utils and dependecies from all ZSH plugins.
     quiet: false
-  - chsh -s $(which zsh)
 

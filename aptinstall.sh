@@ -55,7 +55,8 @@ install tmux
 which brew &> /dev/null
 if [ $? -ne 0 ]; then
   echo "Installing: Homebrew..."
-  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 else
   echo "Already installed: Homebrew"
 fi
