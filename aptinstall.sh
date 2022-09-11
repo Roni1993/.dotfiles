@@ -41,6 +41,7 @@ function tar-install {
 
 # Basics
 install build-essential
+install wget
 install cmake
 install file
 install zip
