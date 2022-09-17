@@ -46,6 +46,9 @@ install cmake
 install file
 install zip
 install unzip
+install gnupg2 
+install pass 
+install gpg
 install tree
 install curl
 install httpie
