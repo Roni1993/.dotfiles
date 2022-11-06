@@ -77,7 +77,7 @@ zinit ice wait lucid atload'base16_summerfruit-light'; zinit light chriskempson/
 zinit ice wait lucid; zinit light djui/alias-tips
 zinit ice wait lucid; zinit light wfxr/forgit
 zinit ice wait lucid; zinit light lukechilds/zsh-nvm
-zinit ice wait lucid; zinit light SukkaW/zsh-proxy
+#zinit ice wait lucid; zinit light SukkaW/zsh-proxy # disable proxy for now
 zinit ice wait lucid; zinit light nnao45/zsh-kubectl-completion
 zinit ice wait lucid; zinit light zdharma-continuum/history-search-multi-word
 #zinit ice wait lucid; zinit light andrewferrier/fzf-z
