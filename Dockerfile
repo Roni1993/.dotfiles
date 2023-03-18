@@ -24,4 +24,5 @@ RUN git config --global --add safe.directory /home/dev/.dotfiles/dotbot/lib/pyya
 RUN bash -c 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && .dotfiles/install'
 RUN zsh -c  "source ~/.zshrc ; zinit update"
 
+USER root
 CMD /usr/bin/zsh
