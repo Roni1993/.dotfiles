@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 # install linuxbrew
 RUN apt-get update && \
-    apt-get install build-essential curl file git ruby-full locales --no-install-recommends -y && \
+    apt-get install sudo build-essential curl file git ruby-full locales --no-install-recommends -y && \
     rm -rf /var/lib/apt/lists/*
 
 RUN localedef -i en_US -f UTF-8 en_US.UTF-8
@@ -16,7 +16,7 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/mast
 USER root
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:${PATH}"
 
-RUN apt-get update && apt-get install zsh git python3 sudo -y
+RUN apt-get update && apt-get install zsh git python3 -y
 
 # create dev user
 RUN useradd --create-home --shell /usr/bin/zsh -G sudo dev && \
