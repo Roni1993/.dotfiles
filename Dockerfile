@@ -14,7 +14,6 @@ USER linuxbrew
 RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 USER root
-ENV PATH="/home/linuxbrew/.linuxbrew/bin:${PATH}"
 
 RUN apt-get update && apt-get install zsh git python3 -y
 
@@ -23,6 +22,7 @@ RUN useradd --create-home --shell /usr/bin/zsh -G sudo dev && \
     echo 'dev ALL=(ALL) NOPASSWD:ALL' >>/etc/sudoers
 USER dev
 WORKDIR /home/dev
+ENV PATH="/home/linuxbrew/.linuxbrew/bin:${PATH}"
 
 # install dotfile defined tools & environment
 COPY --chown=dev:dev . .dotfiles/
