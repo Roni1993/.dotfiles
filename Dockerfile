@@ -30,4 +30,4 @@ RUN git config --global --add safe.directory /home/dev/.dotfiles/dotbot/lib/pyya
     git config --global --add safe.directory /home/dev/.dotfiles/dotbot && \
     git config --global --add safe.directory /home/dev/.dotfiles
 
-RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && .dotfiles/install
+RUN /bin/bash -c 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && .dotfiles/install'
