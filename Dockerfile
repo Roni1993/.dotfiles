@@ -1,10 +1,10 @@
 FROM ubuntu:latest
 
-RUN ./install
+RUN apt-get update && apt install zsh -y
 
 # create dev user
 RUN useradd --create-home --shell /usr/bin/zsh -G sudo dev
 USER dev
 
-RUN zsh -c "zi update"
-
+# install dotfile defined tools & environment
+RUN ./install
