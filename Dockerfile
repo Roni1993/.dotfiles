@@ -25,7 +25,7 @@ USER dev
 WORKDIR /home/dev
 
 # install dotfile defined tools & environment
-COPY . .dotfiles/
+COPY --chown=dev:dev . .dotfiles/
 RUN git config --global --add safe.directory /home/dev/.dotfiles/dotbot/lib/pyyaml && \
     git config --global --add safe.directory /home/dev/.dotfiles/dotbot && \
     git config --global --add safe.directory /home/dev/.dotfiles
