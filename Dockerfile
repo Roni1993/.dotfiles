@@ -11,7 +11,7 @@ RUN useradd -m -s /bin/bash linuxbrew && \
     echo 'linuxbrew ALL=(ALL) NOPASSWD:ALL' >>/etc/sudoers
 
 USER linuxbrew
-RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 USER root
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:${PATH}"
@@ -30,4 +30,4 @@ RUN git config --global --add safe.directory /home/dev/.dotfiles/dotbot/lib/pyya
     git config --global --add safe.directory /home/dev/.dotfiles/dotbot && \
     git config --global --add safe.directory /home/dev/.dotfiles
 
-RUN /bin/bash -c 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && .dotfiles/install'
+RUN bash -c 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && .dotfiles/install'
