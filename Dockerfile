@@ -16,12 +16,13 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/mast
 USER root
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:${PATH}"
 
-RUN apt-get update && apt install zsh git python3 -y
+RUN apt-get update && apt install zsh git python3 sudo -y
 
-# # create dev user
-# RUN useradd --create-home --shell /usr/bin/zsh -G sudo dev
-# USER dev
-# WORKDIR /home/dev
+# create dev user
+RUN useradd --create-home --shell /usr/bin/zsh -G sudo dev && \
+    echo 'dev ALL=(ALL) NOPASSWD:ALL' >>/etc/sudoers
+USER dev
+WORKDIR /home/dev
 
 # install dotfile defined tools & environment
 COPY . .dotfiles/
