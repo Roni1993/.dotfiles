@@ -9,4 +9,4 @@ WORKDIR /home/dev
 
 # install dotfile defined tools & environment
 COPY . .dotfiles/
-RUN ./install
+RUN .dotfiles/install
