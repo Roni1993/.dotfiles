@@ -29,7 +29,9 @@ RUN git config --global --add safe.directory /home/dev/.dotfiles/dotbot/lib/pyya
     git config --global --add safe.directory /home/dev/.dotfiles
 
 RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && .dotfiles/install
-RUN source ~/.zshrc; zinit update; nvm install --lts && npm install -g pnpm
+RUN source ~/.zshrc; zinit update
+# RUN nvm install --lts 
+# RUN npm install -g pnpm
 
 USER root
 CMD /usr/bin/zsh
