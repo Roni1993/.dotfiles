@@ -17,7 +17,7 @@ WORKDIR /home/dev
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:${PATH}"
 
 # install dotfile defined tools & environment
-COPY --chown=dev:dev . .dotfiles/
+COPY --chown=dev:dev [^D]* .dotfiles/
 RUN git config --global --add safe.directory /home/dev/.dotfiles/dotbot/lib/pyyaml && \
     git config --global --add safe.directory /home/dev/.dotfiles/dotbot && \
     git config --global --add safe.directory /home/dev/.dotfiles
