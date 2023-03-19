@@ -16,12 +16,17 @@ SHELL [ "/usr/bin/zsh", "-c" ]
 WORKDIR /home/dev
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:${PATH}"
 
+# install main packages to keep docker layer cache
+COPY --chown=dev:dev aptinstall.sh .dotfiles/
+RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && \
+    .dotfiles/aptinstall.sh && \
+    rm -rf /var/lib/apt/lists/*
+
 # install dotfile defined tools & environment
-COPY --chown=dev:dev [^D]* .dotfiles/
+COPY --chown=dev:dev aptinstall.sh .dotfiles/
 RUN git config --global --add safe.directory /home/dev/.dotfiles/dotbot/lib/pyyaml && \
     git config --global --add safe.directory /home/dev/.dotfiles/dotbot && \
     git config --global --add safe.directory /home/dev/.dotfiles
-
 
 RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && .dotfiles/install
 RUN source ~/.zshrc; zinit update; nvm install --lts && npm install -g pnpm
