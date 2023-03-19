@@ -101,9 +101,6 @@ alias vim=nvim
 
 source ~/.profile
 
-# load visual studio code
-PATH="$PATH:$(wslpath "C:\Users\Roni\AppData\Local\Programs\Microsoft VS Code\bin")"
-
 # load kubectl plugins
 export PATH="${PATH}:${HOME}/.krew/bin"
 
