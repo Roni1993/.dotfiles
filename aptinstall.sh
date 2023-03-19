@@ -88,6 +88,11 @@ install fzf
 bin-install cheat "https://cht.sh/:cht.sh"
 brew install fasd
 
+# sdks
+brew install node@18
+brew install openjdk@17
+brew install pnpm
+
 # dev
 brew install watchman
 brew install neovim
