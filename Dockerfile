@@ -12,6 +12,7 @@ RUN useradd --create-home --shell /usr/bin/zsh dev && \
 
 USER dev
 RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+SHELL [ "/usr/bin/zsh", "-c" ]
 WORKDIR /home/dev
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:${PATH}"
 
@@ -21,8 +22,9 @@ RUN git config --global --add safe.directory /home/dev/.dotfiles/dotbot/lib/pyya
     git config --global --add safe.directory /home/dev/.dotfiles/dotbot && \
     git config --global --add safe.directory /home/dev/.dotfiles
 
-RUN bash -c 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && .dotfiles/install'
-RUN zsh -c  "source ~/.zshrc ; zinit update"
+
+RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && .dotfiles/install
+RUN source ~/.zshrc ; zinit update
 
 RUN nvm install --lts
 RUN npm install -g pnpm
