@@ -20,7 +20,7 @@ ENV PATH="/home/linuxbrew/.linuxbrew/bin:${PATH}"
 COPY --chown=dev:dev aptinstall.sh .dotfiles/
 RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && \
     .dotfiles/aptinstall.sh && \
-    rm -rf /var/lib/apt/lists/*
+    sudo rm -rf /var/lib/apt/lists/*
 
 # install dotfile defined tools & environment
 COPY --chown=dev:dev aptinstall.sh .dotfiles/
