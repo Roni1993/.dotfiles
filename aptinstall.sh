@@ -90,7 +90,7 @@ brew install fasd
 
 # sdks
 brew install node@18
-brew install openjdk@17
+brew install openjdk@17 && brew link openjdk@17
 brew install pnpm
 
 # dev
