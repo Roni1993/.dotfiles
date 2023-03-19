@@ -23,7 +23,7 @@ RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && \
     sudo rm -rf /var/lib/apt/lists/*
 
 # install dotfile defined tools & environment
-COPY --chown=dev:dev aptinstall.sh .dotfiles/
+COPY --chown=dev:dev . .dotfiles/
 RUN git config --global --add safe.directory /home/dev/.dotfiles/dotbot/lib/pyyaml && \
     git config --global --add safe.directory /home/dev/.dotfiles/dotbot && \
     git config --global --add safe.directory /home/dev/.dotfiles
