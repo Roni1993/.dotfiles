@@ -11,6 +11,7 @@ RUN localedef -i en_US -f UTF-8 en_US.UTF-8
 #     echo 'dev ALL=(ALL) NOPASSWD:ALL' >>/etc/sudoers
 
 # USER dev
+RUN touch /.dockerenv
 RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 SHELL [ "/usr/bin/zsh", "-c" ]
 # WORKDIR /home/dev
